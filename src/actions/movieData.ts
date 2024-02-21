@@ -8,16 +8,25 @@ export const fetchTrending = async () => {
 };
 
 export const fetchGenreMovies = async () => {
-	const data = await getApiResponse('/genre/movie/list');
-	const genres = data.genres;
+	try {
+		const data = await getApiResponse('/genre/movie/list');
+		const genres = data.genres;
 
-	for (const genre of genres) {
-		const data = await getApiResponse(`/discover/movie?with_genres=${genre.id}`);
-		// Add movies array to genre object --> For examples: genre = { id: 28, name: 'Action', movies: [ ... ]},
-		genre.movies = data.results;
+		for (const genre of genres) {
+			try {
+				const moviesData = await getApiResponse(`/discover/movie?with_genres=${genre.id}`);
+				genre.movies = moviesData.results;
+			} catch (error) {
+				console.error(`Error fetching movies for genre ${genre.id}:`, error);
+				genre.movies = []; // Or handle the error as required
+			}
+		}
+
+		return genres;
+	} catch (error) {
+		console.error('Error fetching genre list:', error);
+		return []; // Or handle the error as required
 	}
-
-	return genres;
 };
 
 export const searchMovies = async (query: string) => {
