@@ -136,9 +136,9 @@ const Modal = ({ movie, closeModal }: Props) => {
 					<div className='flex gap-3'>
 						<p className='text-base-bold'>Add To List</p>
 						{isFavorite ? (
-							<RemoveCircle className='cursor-pointer text-pink-1' onClick={handleMyList} />
+							<RemoveCircle className='cursor-pointer text-red-500' onClick={handleMyList} />
 						) : (
-							<AddCircle className='cursor-pointer text-pink-1' onClick={handleMyList} />
+							<AddCircle className='cursor-pointer text-red-500' onClick={handleMyList} />
 						)}
 					</div>
 				</div>

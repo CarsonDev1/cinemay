@@ -62,7 +62,7 @@ const AuthForm = ({ type }: { type: 'register' | 'login' }) => {
 		<div className='auth'>
 			<div className='overlay'>
 				<div className='content'>
-					<img src='/assets/logo.png' alt='logo' className='logo' />
+					<h3 className='text-heading3-bold text-red-500'>Cine May</h3>
 
 					<form className='form' onSubmit={handleSubmit(onSubmit)}>
 						{type === 'register' && (

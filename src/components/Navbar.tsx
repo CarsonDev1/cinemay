@@ -35,7 +35,7 @@ const Navbar = () => {
 	return (
 		<div className={`navbar ${isScrolled && 'bg-black-1'}`}>
 			<Link href='/'>
-				<img src='/assets/logo.png' alt='logo' className='logo' />
+				<h3 className='text-heading3-bold text-red-500'>Cine May</h3>
 			</Link>
 
 			<div className='nav-links'>
